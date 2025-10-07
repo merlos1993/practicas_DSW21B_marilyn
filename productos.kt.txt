@@ -1,0 +1,30 @@
+//productos
+
+data class Producto(
+    val nombre: String,
+    val precioUnitario: Int,
+    val estado: String,
+    val promocion: String,
+    val cantidad: Int // ← Nueva propiedad
+)
+
+fun main() {
+    
+    val productos = listOf(
+        Producto("Mango", 2, "disponible", "5 por 2 dólares", 2),      
+        Producto("Uvas verdes", 3, "disponible", "dos x uno", 3),      
+        Producto("Jocote", 1, "no disponible", "no hay", 5)            
+    )
+
+    println("Detalle de productos comprados:\n")
+    
+    var totalCompra = 0
+
+    for (producto in productos) {
+        val subtotal = producto.precioUnitario * producto.cantidad
+        totalCompra += subtotal
+        println("${producto.nombre} - \$${producto.precioUnitario} x ${producto.cantidad} = \$${subtotal} (${producto.promocion})")
+    }
+
+    println("\nTotal a pagar por todos los productos: \$${totalCompra} dólares")
+}
